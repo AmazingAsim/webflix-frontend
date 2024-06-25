@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import {Modal} from 'bootstrap/dist/js/bootstrap.bundle'
 export default function Login() {
+      // let workingUrl = `https://webflix-ivory.vercel.app`
+  let workingUrl = `http://localhost:8080`
     let modalRef = useRef()
     let navigate = useNavigate()
     let {register,handleSubmit,formState:{errors},watch}  = useForm();
@@ -12,7 +14,7 @@ export default function Login() {
     let [flag,setFlag] = useState(false);
     let submit = async(data)=>{
     try {
-        let result = await axios.post('http://localhost:8080/users/signup',{...data,user_password:password},{withCredentials:true});
+        let result = await axios.post(`${workingUrl}/users/signup`,{...data,user_password:password},{withCredentials:true});
         if(result.status===201){
             let modalElement = modalRef.current;
                 const bsModal = new Modal(modalElement);
@@ -55,6 +57,9 @@ export default function Login() {
                             flag?  <button type='submit' className='btn btn-primary'>Signup here</button>
                              :  <button type='submit' className='btn btn-primary' disabled>Signup here</button>
                         }
+                        </div>
+                        <div className="d-grid">
+                            <button className='btn btn-secondary my-2' onClick={()=>{navigate('/')}}>Already have an account ? login in..</button>
                         </div>
                     </form>
                 </div>

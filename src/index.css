@@ -1,1 +1,55 @@
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
+
+aside{
+    box-shadow: 2px 2px 2px peachpuff;
+    display: flex;
+    flex-direction: column;
+}
+
+nav{
+    box-shadow: 0px 2px 2px peachpuff;
+}
+
+#s2{
+    flex:1;
+}
+
+
+
+
+#profileImage{
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+   
+}
+
+#imagelabel{
+    position: relative;
+    width: fit-content;
+    display: block;
+}
+
+
+.hoverbutton{
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    position: absolute;
+    top:40%;
+    left: 45%;
+    opacity: 0.4;
+    visibility: hidden;
+}
+
+
+#imagelabel:hover .hoverbutton{
+    visibility: visible;
+}
+
+#imagelabel:hover{
+   opacity:0.6;
+}
+
+ 
