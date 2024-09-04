@@ -75,9 +75,9 @@ export default function Dashboard() {
   }
   
   return (
-    <div>
+    <div className='bg-success'>
       <div className="container-fluid">
-          <div className="row bg-light" style={{height:'100vh'}}>
+          <div className="row bg-light"  style={{height:'102vh'}}>
              <aside className="col-sm-3 text-center" style={{background:'#eee'}}>
               <div id="s1" className='mt-2'>
          
@@ -96,7 +96,7 @@ export default function Dashboard() {
                 <button className="btn btn-danger" onClick={logout} >Log out</button>
               </div>
              </aside>
-             <main className="col-sm-9 p-0">
+             <main className="col-sm-9 p-0 ">
                <nav className='m-0 p-3' style={{background:'#eee'}}>.</nav>
                <Outlet></Outlet>
              </main>

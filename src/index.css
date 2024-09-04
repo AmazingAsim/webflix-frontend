@@ -1,5 +1,11 @@
 @import url('../node_modules/bootstrap/dist/css/bootstrap.min.css');
 
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 aside{
     box-shadow: 2px 2px 2px peachpuff;
     display: flex;
@@ -13,9 +19,6 @@ nav{
 #s2{
     flex:1;
 }
-
-
-
 
 #profileImage{
     width: 100%;
@@ -52,4 +55,50 @@ nav{
    opacity:0.6;
 }
 
- 
+.chatboxElement{
+  display: flex;
+  flex-direction: column;
+  background-color: #eee;
+  padding: 0px !important;
+  margin: 0px !important;
+  height: 92%;
+}
+.inputBox{
+  min-height: 75px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+}
+.inputBox textarea{
+    flex: 1;
+    display: block;
+    min-width: 50px;
+}
+.inputBox button{
+  width: 150px;
+  display: block;
+}
+
+.flexbox{
+    background-color: white;
+    flex:1;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+.flexbox div{
+   width: 40%;
+   background-color:lightgreen;
+   margin: 5px;
+}
+.flexbox .sender{
+    align-self: flex-end;
+}
+
+.flexbox .receiver{
+    align-self: flex-start;
+}
+

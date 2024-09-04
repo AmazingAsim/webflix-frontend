@@ -1,5 +1,5 @@
 
-import { useState ,useEffect} from 'react';
+import { useState ,useEffect,useRef} from 'react';
 import axios from 'axios'
 import { useParams } from 'react-router-dom';
 import {io} from 'socket.io-client'
@@ -7,13 +7,15 @@ function Chatbox() {
   const {sender,receiver} = useParams()
   // let baseurl = 'https://chatingapp.onrender.com'
   let baseurl = 'http://localhost:9090'
-  let [data,setData] = useState([])
-  let socket = io(baseurl);
-  
-//   socket.on('server',(msg)=>{
-//     console.log(msg);
-//     setData([...data,msg])
-//     })
+  let [data,setData] = useState([]);
+  let [messageBody,setMessageBody] = useState('');
+  const socketRef = useRef(null);
+let sendMessage = async()=>{
+  if (socketRef.current) {
+    socketRef.current.emit('pm', { body: messageBody, senderId: sender }, receiver);
+    console.log('send message called');
+  }
+}
 
   let getmessages = async()=>{
     try {
@@ -27,12 +29,26 @@ function Chatbox() {
   }
 
   useEffect(()=>{
-    getmessages()
+    let socket = io(baseurl);
+    socketRef.current = socket;
+    socket.emit('register',sender);
+  
+    socket.on('pm',(msg)=>{
+      getmessages();
+      })
+    return () => {
+      socket.disconnect();
+    };
+},[sender])
+
+
+useEffect(()=>{
+  getmessages()
 },[sender,receiver])
 
   return (
-    <div className="App">
-         <div className="container">
+    
+         <div className="container-fluid chatboxElement" >
             <div className='flexbox'>
           {
             data.map(message=>{
@@ -61,9 +77,12 @@ function Chatbox() {
             })
           }
             </div>
-            <div className='inputBox'></div>
+            <div className='inputBox'>
+              <textarea onChange={(e)=>{setMessageBody(e.target.value)}} className='form-control' type="text" />
+              <button onClick={sendMessage} className='btn btn-success'>Send</button>
+            </div>
          </div>
-    </div>
+    
   );
 }
 
