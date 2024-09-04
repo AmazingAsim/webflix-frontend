@@ -12,7 +12,7 @@ export default function Login() {
     let {register,handleSubmit,formState:{errors}}  = useForm();
     let submit = async (data)=>{
         try {
-            axios.defaults.withCredentials = true;
+            // axios.defaults.withCredentials = true;
             let result =await axios.post(`${workingUrl}/users/login`,data,{withCredentials:true});
             if(result.status==201){
                 localStorage.setItem('jwt',result?.data?.jwt);
