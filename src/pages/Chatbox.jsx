@@ -5,8 +5,8 @@ import { useParams } from 'react-router-dom';
 import {io} from 'socket.io-client'
 function Chatbox() {
   const {sender,receiver} = useParams()
-  // let baseurl = 'https://chatingapp.onrender.com'
-  let baseurl = 'http://localhost:9090'
+  let baseurl = 'https://chatingapp.onrender.com'
+  // let baseurl = 'http://localhost:9090'
   let [data,setData] = useState([]);
   let [messageBody,setMessageBody] = useState('');
   const socketRef = useRef(null);
