@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 export default function Userlist({senderId}) {
-    //   let workingUrl = `https://chatingapp.onrender.com`
-  let workingUrl = `http://localhost:9090`
+      let workingUrl = `https://chatingapp.onrender.com`
+  // let workingUrl = `http://localhost:9090`
     const [users,setUsers] = useState([]);
     let getUsersData = async()=>{
         try {
