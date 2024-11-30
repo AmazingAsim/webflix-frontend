@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 export default function Userlist({senderId}) {
-      let workingUrl = `https://chatingapp.onrender.com`
-  // let workingUrl = `http://localhost:9090`
+    let workingUrl = process.env.REACT_APP_API_URL;
     const [users,setUsers] = useState([]);
     let getUsersData = async()=>{
         try {
           axios.defaults.withCredentials = true;
           let id = localStorage.getItem('id') || null
-          let result =await axios.get(`${workingUrl}/users`,{withCredentials:true});
+          let result =await axios.get(`${workingUrl}/users`,{withCredentials:true,headers:{
+            authorization:`Bearer ${localStorage.getItem('jwt')}`
+          }});
           console.log(result.data);
           setUsers(result.data);
           console.log(result.data?.user_profile) 
         } catch (error) {
-          console.log(error)
+          console.log(error)  
         }
       }
 

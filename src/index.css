@@ -10,6 +10,7 @@ aside{
     box-shadow: 2px 2px 2px peachpuff;
     display: flex;
     flex-direction: column;
+    padding: 16px;
 }
 
 nav{
@@ -61,7 +62,8 @@ nav{
   background-color: #eee;
   padding: 0px !important;
   margin: 0px !important;
-  height: 92%;
+  height:92vh;
+  overflow-y: scroll;
 }
 .inputBox{
   min-height: 75px;

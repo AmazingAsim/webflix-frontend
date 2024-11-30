@@ -4,9 +4,8 @@ import {useForm} from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import {Modal} from 'bootstrap/dist/js/bootstrap.bundle'
-export default function Login() {
-      let workingUrl = `https://chatingapp.onrender.com`
-//   let workingUrl = `http://localhost:8080`
+export default function Signup() {
+    let workingUrl = process.env.REACT_APP_API_URL;
     let modalRef = useRef()
     let navigate = useNavigate()
     let {register,handleSubmit,formState:{errors},watch}  = useForm();
@@ -30,7 +29,7 @@ export default function Login() {
         <div className="container mt-5">
             <div className="row">
                 <div className="col-6">
-                    <h1 className='display-1 text-danger'>Welcome to Webflix</h1>
+                    <h1 className='display-1 text-danger'>Welcome to Kabutar</h1>
                 </div>
                 <div className="col-6">
                     <form className='formbox' onSubmit={handleSubmit(submit)}>
@@ -50,7 +49,7 @@ export default function Login() {
                             }
                         }} />
 
-                        {flag ? <small>password matched</small> : <small>password and confirm password do not matched</small>}
+                        {flag ? <small>password matched</small> : <small className='text-danger'>password and confirm password do not matched</small>}
 
                         <div className="d-grid">
                         {
