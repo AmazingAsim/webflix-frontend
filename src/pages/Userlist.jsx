@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom';
 export default function Userlist({senderId}) {
-    let workingUrl = process.env.REACT_APP_API_URL;
+    const workingUrl = (process.env.REACT_APP_API_URL || 'http://localhost:9090');
     const [users,setUsers] = useState([]);
     let getUsersData = async()=>{
         try {
@@ -38,7 +38,7 @@ export default function Userlist({senderId}) {
                        <div style={{width:'80px'}}>
                           {
                               user.user_profile
-                              ?<img style={{aspectRatio:"1/1",objectFit:"cover",width:"80%"}} src={`${workingUrl}/users/getimage/${user.user_profile}`} className='img-fluid rounded-circle' alt="" />
+                              ?<img style={{aspectRatio:"1/1",objectFit:"cover",width:"80%"}} src={`/users/getimage/${user.user_profile}`} className='img-fluid rounded-circle' alt="" />
                               :<img src='placeholder.png' className='img-fluid rounded-circle'    alt=''/>
                           }
                        </div>

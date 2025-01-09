@@ -6,16 +6,14 @@ import {Modal} from 'bootstrap/dist/js/bootstrap.bundle'
 import { Outlet } from 'react-router-dom';
 import Userlist from './Userlist';
 export default function Dashboard() {
-  let workingUrl = process.env.REACT_APP_API_URL;
-  // let workingUrl = `http://localhost:9090`
   let modalRef = useRef();
   let profileRef = useRef();
   let navigate = useNavigate()
   let [user,setUser] = useState({})
   let [imageUrl,setImageUrl] = useState('placeholder.png')
   let [file,setFile] = useState(null)
-
-  let getUserData = async()=>{
+  const workingUrl = (process.env.REACT_APP_API_URL || 'http://localhost:9090');
+ let getUserData = async()=>{
     try {
       axios.defaults.withCredentials = true;
       let id = localStorage.getItem('id') || null
@@ -110,6 +108,11 @@ export default function Dashboard() {
              </main>
           </div>
       </div>
+
+
+
+
+
 
 
 

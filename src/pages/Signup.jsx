@@ -4,8 +4,9 @@ import {useForm} from 'react-hook-form'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import {Modal} from 'bootstrap/dist/js/bootstrap.bundle'
+
 export default function Signup() {
-    let workingUrl = process.env.REACT_APP_API_URL;
+    const workingUrl =( process.env.REACT_APP_API_URL || 'http://localhost:9090');
     let modalRef = useRef()
     let navigate = useNavigate()
     let {register,handleSubmit,formState:{errors},watch}  = useForm();

@@ -7,13 +7,13 @@ import { Modal } from 'bootstrap/dist/js/bootstrap.bundle'
 
 
 export default function Login() {
-  let workingUrl = process.env.REACT_APP_API_URL;
+  const workingUrl = (process.env.REACT_APP_API_URL || 'http://localhost:9090');
   let modalRef = useRef()
   let navigate = useNavigate();
   let { register, handleSubmit, formState: { errors } } = useForm();
   let submit = async (data) => {
     try {
-      // axios.defaults.withCredentials = true;
+      axios.defaults.withCredentials = true;
       let result = await axios.post(`${workingUrl}/users/login`, data, { withCredentials: true });
       if (result.status == 201) {
         localStorage.setItem('jwt', result?.data?.jwt);
