@@ -38,7 +38,7 @@ export default function Userlist({senderId}) {
                        <div style={{width:'80px'}}>
                           {
                               user.user_profile
-                              ?<img style={{aspectRatio:"1/1",objectFit:"cover",width:"80%"}} src={`/users/getimage/${user.user_profile}`} className='img-fluid rounded-circle' alt="" />
+                              ?<img style={{aspectRatio:"1/1",objectFit:"cover",width:"80%"}} src={`${workingUrl}/users/getimage/${user.user_profile}`} className='img-fluid rounded-circle' alt="" />
                               :<img src='placeholder.png' className='img-fluid rounded-circle'    alt=''/>
                           }
                        </div>

@@ -68,7 +68,7 @@ export default function Signup() {
 
 {/* modal here */}
 
-        <div ref={modalRef} className="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+ <div ref={modalRef} className="modal fade" id="loginmodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-body">
